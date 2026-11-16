@@ -63,10 +63,15 @@ public function findPaginados(int $page, int $perPage): Paginator
  */
 public function findBuscadosPaginados(string $searchTerm, int $page, int $perPage): Paginator
 {
-    $query = $this->createQueryBuilder('p')
-        ->andWhere('p.Content LIKE :val')
-        ->setParameter('val', '%'.$searchTerm.'%')
-        ->orderBy('p.publishedAt', 'DESC')
+    $qb = $this->createQueryBuilder('p');
+
+    $searchTerm = trim($searchTerm);
+    if (!empty($searchTerm)) {
+        $qb->andWhere('p.title LIKE :val OR p.content LIKE :val')
+           ->setParameter('val', '%' . $searchTerm . '%');
+    }
+
+    $query = $qb->orderBy('p.publishedAt', 'DESC')
         ->setFirstResult(($page - 1) * $perPage)
         ->setMaxResults($perPage)
         ->getQuery();

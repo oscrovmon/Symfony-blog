@@ -33,7 +33,7 @@
                         {{ include('partials/_post.html.twig', {'post': post}) }}
                     {% endfor %}
 
-                    {% if searchTerm is defined %}
+                    {% if searchTerm is defined and searchTerm %}
                         {{ include('partials/_paginador.html.twig', {
                             'page': page,
                             'totalPages': totalPages,
