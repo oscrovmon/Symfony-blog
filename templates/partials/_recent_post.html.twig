@@ -1,0 +1,13 @@
+<div>
+    <hr>
+    {% if recent.image %}
+    <img class="img-responsive" src="{{ asset('images/blog/' ~ recent.image) }}" alt="{{ recent.title }}" style="margin-bottom: 8px;">
+    {% endif %}
+    <a href="{{ path('single_post', {'slug':recent.slug}) }}">{{ recent.title }}</a>
+    <h5> By <span>{{ recent.postUser ? recent.postUser.email : 'Anonymous' }}</span></h5>
+    <p>{{ recent.publishedAt | date('d') }} {{ recent.publishedAt | date('F') }}</p>
+    <p><i class="fa fa-clock-o sr-icons"></i>
+        {{ recent.publishedAt | date('h') }}
+        {{ recent.publishedAt | date('A') }}
+    </p>
+</div>

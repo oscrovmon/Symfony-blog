@@ -1,0 +1,15 @@
+<div class="col-xs-12 col-sm-12">
+<div class="comment">
+<div class="comment-body">
+<h4><strong>{{ comment.name }}</strong></h4>
+<p>{{ comment.text }}</p>
+</div>
+<div class="comment-footer">
+<span class="comment-date">{{ comment.publishedAt | date('d') }} {{ comment.publishedAt | date('F') }}</span>
+<span class="comment-time">
+<i class="fa fa-clock-o sr-icons"></i> {{ comment.publishedAt | date('h A') }}
+</span>
+</div>
+<hr>
+</div>
+</div>
